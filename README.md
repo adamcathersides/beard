@@ -1,1 +1,7 @@
 # beard
+
+# Install
+
+```
+npm install
+```
