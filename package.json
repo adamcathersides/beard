@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/adamcathersides/beard#readme",
   "dependencies": {
+    "express": "^4.18.2",
     "node-osc": "^8.0.11",
     "soundcraft-ui-connection": "^1.5.0"
   }
