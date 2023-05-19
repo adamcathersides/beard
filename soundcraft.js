@@ -80,10 +80,11 @@ app.get('/input/person/*/dist', function (req, res) {
     fx_state[person]['dist']['state'] = Boolean(req.query['enabled'] === 'true')
     osc_address = "/Carla/" + fx_state[person]['dist']['rack_position'] + "/set_drywet"
     if (fx_state[person]['dist']['state']) {
-        osc.send(osc_address, {type:'f', value:1.0})
+        
+        sendOSC(osc_address, 'f', 1.0)
         console.log("%s distortion enabled", person)
     } else {
-        osc.send(osc_address, {type:'f', value: 0.0})
+        sendOSC(osc_address, 'f', 0.0)
         console.log("%s distortion disabled", person)
     }
 
@@ -97,16 +98,24 @@ app.get('/input/person/*/slap', function (req, res) {
     
     osc_address = "/Carla/" + fx_state[person]['slap']['rack_position'] + "/set_drywet"
     if (fx_state[person]['slap']['state']) {
-        osc.send(osc_address, {type:'f', value:1.0})
+        sendOSC(osc_address, 'f', 1.0)
         console.log("%s distortion enabled", person)
     } else {
-        osc.send(osc_address, {type:'f', value: 0.0})
+        sendOSC(osc_address, 'f', 0.0)
         console.log("%s distortion disabled", person)
     }
 
     setGlobalFxState(person)
     res.end(JSON.stringify(fx_state))
 })
+
+function sendOSC(address, type, value, retries=2) {
+
+    for (let i = 0; i < retries; i++) {
+        console.log('sent')
+        osc.send(address, {type:type, value:value})
+    }
+}
 
 function setGlobalFxState(person) {
     
@@ -122,14 +131,12 @@ function setGlobalFxState(person) {
 
 }
 
-
 server = app.listen(8081, function () {
    host = server.address().address
    port = server.address().port
    console.log("Listening at http://%s:%s", host, port)
 })
 
-/* conn.disconnect(); // close connection */
 
 
 
