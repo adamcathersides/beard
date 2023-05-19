@@ -109,7 +109,7 @@ app.get('/input/person/*/slap', function (req, res) {
     res.end(JSON.stringify(fx_state))
 })
 
-function sendOSC(address, type, value, retries=2) {
+function sendOSC(address, type, value, retries=3) {
 
     for (let i = 0; i < retries; i++) {
         console.log('sent')
