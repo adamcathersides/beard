@@ -21,9 +21,13 @@ def thing(channel):
 
 
 gpio.add_event_detect(23, gpio.FALLING, callback=thing, bouncetime=300)
-
-while True:
-    time.sleep(1)
+try:  
+    while True:
+        time.sleep(10)
+  
+except KeyboardInterrupt:  
+    gpio.cleanup()       # clean up GPIO on CTRL+C exit  
+    gpio.cleanup()           # clean up GPIO on normal exit
 
 
 
