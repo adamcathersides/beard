@@ -14,9 +14,9 @@ def thing(channel):
     led_state = gpio.input(17)
     print(led_state)
     print("Button pressed!")
-    if led_state == 1:
+    if led_state == "1":
         gpio.output(17, gpio.HIGH)
-    elif led_state == 0:
+    elif led_state == "0":
         gpio.output(17, gpio.LOW)
 
 
