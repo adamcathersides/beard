@@ -9,7 +9,7 @@ gpio.setup(17, gpio.OUT)
 led_state = False
 
 
-def thing(channel):
+def thing(channel, led_state):
 
     led_state = not led_state
     print("Button pressed!")
