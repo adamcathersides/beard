@@ -14,20 +14,20 @@ def thing(channel):
     led_state = gpio.input(17)
     print(led_state)
     print("Button pressed!")
-    if led_state == "1":
+    if led_state:
         gpio.output(17, gpio.HIGH)
     else:
         gpio.output(17, gpio.LOW)
 
 
 gpio.add_event_detect(23, gpio.FALLING, callback=thing, bouncetime=300)
+
 try:  
     while True:
         time.sleep(10)
   
 except KeyboardInterrupt:  
     gpio.cleanup()       # clean up GPIO on CTRL+C exit  
-    gpio.cleanup()           # clean up GPIO on normal exit
 
 
 
