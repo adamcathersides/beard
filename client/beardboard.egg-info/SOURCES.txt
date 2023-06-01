@@ -1,0 +1,8 @@
+setup.py
+beardboard/beardboard.py
+beardboard.egg-info/PKG-INFO
+beardboard.egg-info/SOURCES.txt
+beardboard.egg-info/dependency_links.txt
+beardboard.egg-info/entry_points.txt
+beardboard.egg-info/requires.txt
+beardboard.egg-info/top_level.txt

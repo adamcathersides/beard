@@ -76,7 +76,11 @@ app.get('/input/chn/*/togglemute', function (req, res) {
 })
 
 app.get('/input/person/*/dist', function (req, res) {
+    console.log(req.query)
     person = req.params[0]
+    res.set({
+        'content-type':'application/json'
+    })
     fx_state[person]['dist']['state'] = Boolean(req.query['enabled'] === 'true')
     osc_address = "/Carla/" + fx_state[person]['dist']['rack_position'] + "/set_drywet"
     if (fx_state[person]['dist']['state']) {
