@@ -12,6 +12,7 @@ led_state = False
 def thing(channel):
 
     led_state = gpio.input(17)
+    print(led_state)
     print("Button pressed!")
     if led_state:
         gpio.output(17, gpio.HIGH)
