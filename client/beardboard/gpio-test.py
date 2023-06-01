@@ -9,9 +9,10 @@ gpio.setup(17, gpio.OUT)
 
 led_state = False
 
-initial_state = requests.get('http://192.168.1.199:8081/state').json()["adam"]["electric"]["state"]
+full_state = requests.get('http://192.168.1.199:8081/state')
+electric =fullstate.json()["adam"]["electric"]["state"]
 
-if initial_state:
+if electric:
     gpio.output(17, gpio.HIGH)
 else:
     gpio.output(17, gpio.LOW)
