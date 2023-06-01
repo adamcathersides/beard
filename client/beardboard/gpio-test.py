@@ -23,7 +23,7 @@ def thing(channel):
         gpio.output(17, gpio.LOW)
 
 
-gpio.add_event_detect(23, gpio.FALLING, callback=thing, bouncetime=100)
+gpio.add_event_detect(23, gpio.FALLING, callback=thing, bouncetime=500)
 
 try:  
     while True:
