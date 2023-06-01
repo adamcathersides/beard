@@ -13,7 +13,7 @@ initial_state = requests.get('http://192.168.1.199:8081/state').json()["adam"]["
 
 if initial_state:
     gpio.output(17, gpio.HIGH)
-else
+else:
     gpio.output(17, gpio.LOW)
 
 
