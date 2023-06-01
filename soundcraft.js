@@ -100,6 +100,13 @@ let electric_patch = {
 }
 
 app.get('/input/guitar/adam/electric', function (req, res) {
+    res.set({'content-type':'application/json'})
+    res.end(JSON.stringify(fx_state))
+
+})
+
+
+app.get('/input/guitar/adam/electric', function (req, res) {
     console.log(req.query)
     res.set({
         'content-type':'application/json'
