@@ -1,5 +1,6 @@
 import RPi.GPIO as gpio
 import time
+import requests
 
 
 gpio.setmode(gpio.BCM)
@@ -11,11 +12,12 @@ led_state = False
 
 def thing(channel):
 
-    led_state = not bool(int(gpio.input(17)))
+    r = request.get('http://192.168.1.199:8081/input/guitar/adam/electric')
+    led_state = r["adam"]["electric"]["state"]
     
     print(led_state)
     print("Button pressed!")
-    if led_state: 
+    if led_state == "true": 
         gpio.output(17, gpio.HIGH)
     else:
         gpio.output(17, gpio.LOW)
