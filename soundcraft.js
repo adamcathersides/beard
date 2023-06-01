@@ -99,7 +99,7 @@ let electric_patch = {
     ".dyn.release":0.4887695312
 }
 
-app.get('/input/guitar/adam/electric', function (req, res) {
+app.get('/state', function (req, res) {
     res.set({'content-type':'application/json'})
     res.end(JSON.stringify(fx_state))
 
