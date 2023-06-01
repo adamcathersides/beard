@@ -4,7 +4,7 @@ import time
 
 gpio.setmode(gpio.BCM)
 gpio.setup(23, gpio.IN, pull_up_down=gpio.PUD_UP)
-gpio.setup(17, gpio.OUT, pull_up_down=gpio.PUD_DOWN)
+gpio.setup(17, gpio.OUT)
 
 led_state = False
 
