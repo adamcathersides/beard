@@ -17,7 +17,7 @@ def thing(channel):
     
     print(led_state)
     print("Button pressed!")
-    if led_state == "true": 
+    if led_state: 
         gpio.output(17, gpio.HIGH)
     else:
         gpio.output(17, gpio.LOW)
