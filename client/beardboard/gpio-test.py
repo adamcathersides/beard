@@ -9,8 +9,8 @@ gpio.setup(17, gpio.OUT)
 
 led_state = False
 
-full_state = requests.get('http://{}:8081/state'.format(sys.argv[1])
-electric =full_state.json()["adam"]["electric"]["state"]
+full_state = requests.get('http://{}:8081/state'.format(sys.argv[1]))
+electric = full_state.json()["adam"]["electric"]["state"]
 
 if electric:
     gpio.output(17, gpio.HIGH)
@@ -20,7 +20,7 @@ else:
 
 def thing(channel):
 
-    r = requests.get('http://{}:8081/input/guitar/adam/electric'.format(sys.argv[1])
+    r = requests.get('http://{}:8081/input/guitar/adam/electric'.format(sys.argv[1]))
     led_state = r.json()["adam"]["electric"]["state"]
     
     print(led_state)
