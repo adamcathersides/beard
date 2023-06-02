@@ -1,7 +1,7 @@
 import RPi.GPIO as gpio
 import time
 import requests
-
+import sys
 
 gpio.setmode(gpio.BCM)
 gpio.setup(23, gpio.IN, pull_up_down=gpio.PUD_UP)
@@ -9,7 +9,7 @@ gpio.setup(17, gpio.OUT)
 
 led_state = False
 
-full_state = requests.get('http://192.168.1.199:8081/state')
+full_state = requests.get('http://{}:8081/state'.format(sys.argv[1])
 electric =full_state.json()["adam"]["electric"]["state"]
 
 if electric:
@@ -20,7 +20,7 @@ else:
 
 def thing(channel):
 
-    r = requests.get('http://192.168.1.199:8081/input/guitar/adam/electric')
+    r = requests.get('http://{}:8081/input/guitar/adam/electric'.format(sys.argv[1])
     led_state = r.json()["adam"]["electric"]["state"]
     
     print(led_state)
